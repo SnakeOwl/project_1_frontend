@@ -40,7 +40,7 @@ export default function Galery({
                         const link = `${apiStorage}/${image.url}`;
 
                         return (
-                            <a className='w-1/2' href={link}>
+                            <a key={image.id} className='w-1/4 mx-2' href={link}>
                                 <Img className='' alt="img1" src={link} />
                             </a>
                         )

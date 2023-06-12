@@ -1,6 +1,8 @@
-export default function Preloader() {
+export default function Preloader({
+    className=""
+}) {
     return (
-        <div className="animate-spin text-3xl w-10 h-10 mx-auto">
+        <div className={className + " animate-spin text-3xl w-15 h-15 mx-auto"} >
             <i className="bi bi-arrow-repeat"></i>
         </div>
     )

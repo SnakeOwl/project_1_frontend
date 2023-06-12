@@ -18,9 +18,9 @@ export default function Catalog({
 
   // подгрузка Офферов
   useEffect(() => {
-    const category = params.category === undefined ? null: params.category[0];
+    const category = params.category === undefined ? null : params.category[0];
 
-    axiosClient.get("catalog", {params: {category: category}})
+    axiosClient.get("catalog", { params: { category: category } })
       .then(({ data }) => {
         dispatchCatalog({
           type: "SET_OFFERS",
@@ -28,14 +28,11 @@ export default function Catalog({
         });
       })
   }, []);
-  
+
 
   return (
     <div className="">
-      <div className="flex flex-wrap">
-        <OfferList className={"px-1"} offers={offers.data} />
-      </div>
-
+      <OfferList className={"px-1"} offers={offers.data} />
 
       <Pagination links={offers.links} />
     </div>

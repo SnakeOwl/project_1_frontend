@@ -1,24 +1,15 @@
-import { RedButton, RedButtonReversed } from "@/Components/Buttons/ColoredButtons"
+import { RedButtonReversed } from "@/Components/Buttons/ColoredButtons"
 import Img from "@/Components/Img"
 import ContextLang from "@/context/Lang/ContextLang"
 import Link from "next/link"
 import { useContext } from "react"
+import ToBusketButton from "@/Components/ToBusketButton"
+import IOffer from "@/interfaces/IOffer"
 
 export default function Card({
     offer
 }: {
-    offer: {
-        id: BigInt,
-        short_image: string | null,
-        price: number,
-
-        item: {
-            name: string,
-            name_en: string,
-            description: string,
-            description_en: string,
-        }
-    }
+    offer: IOffer
 }) {
 
     const { stateLang } = useContext(ContextLang);
@@ -26,9 +17,6 @@ export default function Card({
 
     const offerLink = `/offer/${offer.id}`;
 
-    function toCart() {
-        alert("В разработке")
-    }
 
     function fastBuy() {
         alert("В разработке")
@@ -36,7 +24,7 @@ export default function Card({
 
     return (
         <div className="p-2 ml-1 mb-8 w-full xl:w-1/6">
-            <div className="h-64 rounded-xl overflow-hidden">
+            <div className="h-64 rounded-xl overflow-hidden mb-2">
                 <Link href={offerLink} className="h-full w-full" >
                     <Img
                         className=" h-full w-full object-cover"
@@ -64,12 +52,12 @@ export default function Card({
                 </div>
 
                 <div className="flex justify-between">
-                    <RedButton
-                        className={"py-2 px-5 rounded-md"}
-                        onClick={toCart}
+                    <ToBusketButton  
+                        offerId={offer.id}
+                        className={"py-2 px-5 rounded-md"} 
                     >
                         {lang["to basket"]}
-                    </RedButton>
+                    </ToBusketButton>
 
                     <RedButtonReversed
                         className={"py-2 px-3 rounded-md"}

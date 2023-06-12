@@ -1,11 +1,13 @@
 {
+    "parameters"            : "Характеристики",
+    "description"           : "Описание",
+    "galery"                : "Галерея",
     "hi"                    : "Привет",
     "server conn propblem"  : "Проблема соединения с сервером",
     "email"                 : "Email",
     "offer"                 : "Предложение",
     "order offers"          : "ТП заказа",
     "form send"             : "Форма отправлена",
-    
     "general information"   : "Общие сведения",
     "list of offers in order": "Список торговых предложений в Заказе",
     "looking order"         : "Просмотр заказа",
@@ -177,5 +179,6 @@
     "confirm password"      : "Подтвердите пароль",
     "testlang"              : "тестланг",
 
-    "currentLocale"         : "ru"
+    "currentLocale"         : "ru",
+    "cl"         : "ru"
 }

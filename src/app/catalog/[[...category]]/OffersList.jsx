@@ -5,7 +5,7 @@ export default function OfferList({
     offers
 }){
     return (
-        <div className={`px-3 flex flex-wrap justify-between ${className}`}>
+        <div className={`px-3 flex flex-wrap justify-around ${className}`}>
             {
                 offers.map(offer=>{
                     return (

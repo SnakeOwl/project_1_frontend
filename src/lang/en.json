@@ -1,4 +1,7 @@
 {
+    "parameters"            : "Parameters",
+    "description"           : "Description",
+    "galery"                : "Galery",
     "hi"                    : "",
     "server conn propblem"  : "There is a problem with server connection",
     "email"                 : "Email",
@@ -177,5 +180,6 @@
     "confirm password"      : "Confirm password",
     "testlang"              : "testlang",
 
-    "currentLocale"         : "en"
+    "currentLocale"         : "en",
+    "cl"         : "en"
 }

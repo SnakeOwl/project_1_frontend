@@ -1,4 +1,8 @@
-export function BlueButton({children, className, onClick=()=>{}}){
+export function BlueButton({
+    children, 
+    className="", 
+    onClick=()=>{}
+}){
     return (
         <button 
         onClick={onClick}
@@ -16,7 +20,11 @@ export function BlueButton({children, className, onClick=()=>{}}){
     )
 }
 
-export function BlueButtonReversed({children, className, onClick=()=>{}}){
+export function BlueButtonReversed({
+    children, 
+    className="", 
+    onClick=()=>{}
+}){
     return (
         <button 
         onClick={onClick}
@@ -34,7 +42,11 @@ export function BlueButtonReversed({children, className, onClick=()=>{}}){
     )
 }
 
-export function RedButton({children, className, onClick=()=>{}}){
+export function RedButton({
+    children, 
+    className="", 
+    onClick=()=>{}
+}){
     return (
         <button 
         onClick={onClick}
@@ -52,7 +64,11 @@ export function RedButton({children, className, onClick=()=>{}}){
     )
 }
 
-export function RedButtonReversed({children, className, onClick=()=>{}}){
+export function RedButtonReversed({
+    children, 
+    className="",
+    onClick=()=>{}
+}){
     return (
         <button 
         onClick={onClick}
