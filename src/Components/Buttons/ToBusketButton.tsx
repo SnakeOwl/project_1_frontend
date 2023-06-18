@@ -1,7 +1,7 @@
 import { RedButton, RedButtonReversed } from "@/Components/Buttons/ColoredButtons";
-import Preloader from "@/Components/Preloader";
 import axiosClient from "@/axios-client";
-import { useState } from "react"
+import ContextUser from "@/context/User/ContextUser";
+import { useContext, useState } from "react"
 
 export default function ToBusketButton({
     offerId,
@@ -15,10 +15,11 @@ export default function ToBusketButton({
     
     const [inBasket, setInBasket] = useState(false);
     const [error, setError] = useState(false);
+    const {dispatchUser} = useContext(ContextUser);
 
 
     async function handleClick(){
-        const bkey = localStorage.getItem("basketKey") || null;
+        const bkey = localStorage.getItem("bkey") || null;
 
         await axiosClient.get(`/basket/add/${offerId}`, {
             params: { key: bkey }
@@ -27,7 +28,12 @@ export default function ToBusketButton({
             setInBasket(true);
 
             if(bkey === null){
-                localStorage.setItem("basketKey", data.bkey);
+                dispatchUser({
+                    type: "SET_BKEY",
+                    bkey: data.bkey
+                });
+
+                localStorage.setItem("bkey", data.bkey);
             }
         })
         .catch(error => {
@@ -36,9 +42,11 @@ export default function ToBusketButton({
         });
     }
 
+
     // произошла ошибка
     if (error)
-        return <Preloader />;
+        return <i className="bi bi-x-square"></i>
+
 
     // товар добавлен
     if (inBasket)

@@ -1,5 +1,6 @@
 const StateUser = {
-    user: null,
+    user: undefined,
+    bkey: localStorage.getItem("bkey") || undefined,
 };
 
 export default StateUser;

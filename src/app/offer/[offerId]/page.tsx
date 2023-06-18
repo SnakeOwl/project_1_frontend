@@ -8,7 +8,8 @@ import Galery from "./Conmponents/Galery";
 import Img from "@/Components/Img";
 import { RedLinkReversed } from "@/Components/Links/ColoredLinks";
 import IItem from "@/interfaces/IItem";
-import ToBusketButton from "@/Components/ToBusketButton";
+import ToBusketButton from "@/Components/Buttons/ToBusketButton";
+import SubscribeArea from "@/app/Components/SubscribeArea";
 
 export default function Offer({
     params
@@ -188,16 +189,20 @@ export default function Offer({
 
 
                     {offer.count > 0 ?
-                        <ToBusketButton
-                            offerId={offer.id}
-                            className={"px-5 py-2 rounded-md text-xl w-full xl:w-auto"}
-                        >
-
-                            {lang["to basket"]}
-                        </ToBusketButton>
-
+                        <div className="w-full mt-3 flex">
+                            <ToBusketButton
+                                offerId={offer.id}
+                                className={"py-3 rounded-md text-xl mx-auto w-full xl:w-1/4"}
+                            >
+                                {lang["to basket"]}
+                            </ToBusketButton>
+                        </div>
                         :
-                        <span>{lang["no more offers"]}</span>
+                        
+                            <div className="w-full xl:w-1/2 ">
+                                <SubscribeArea offerId={offer.id} />
+                            </div>
+                        
                     }
                 </div>
             </div>
@@ -243,17 +248,22 @@ export default function Offer({
             </div>
 
 
-            {/* to busket button */}
-            <div className="w-full mt-3 flex">
-                <ToBusketButton
-                    offerId={offer.id}
-                    className={"py-3 rounded-md text-xl mx-auto w-full xl:w-1/4"}
-                >
-                    {lang["to basket"]}
-                </ToBusketButton>
-            </div>
-
-
+            {offer.count > 0 ?
+                <div className="w-full mt-3 flex">
+                    <ToBusketButton
+                        offerId={offer.id}
+                        className={"py-3 rounded-md text-xl mx-auto w-full xl:w-1/4"}
+                    >
+                        {lang["to basket"]}
+                    </ToBusketButton>
+                </div>
+                :
+                <div className="w-full flex justify-center">
+                    <div className="w-full xl:w-1/4 ">
+                        <SubscribeArea offerId={offer.id} />
+                    </div>
+                </div>
+            }
         </main>
     )
 }

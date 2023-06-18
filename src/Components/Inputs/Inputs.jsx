@@ -1,7 +1,5 @@
-
-
 export function Input({
-    className,
+    className="",
     labelText,
     value,
     onChange,

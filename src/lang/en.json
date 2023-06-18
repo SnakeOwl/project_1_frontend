@@ -1,4 +1,7 @@
 {
+    "critical error"        : "Critical Error, call to Administator",
+
+    "thank for order"       : "Thank you for Order",
     "parameters"            : "Parameters",
     "description"           : "Description",
     "galery"                : "Galery",
@@ -20,7 +23,7 @@
     "message created"       : "Thank you for the message :)",
     "powered with"          : "Powered with",
     "Something is wrong"    : "Something is wrong :(",
-    "Your Order's number is": "Your Order's number is",
+    "your order's number is": "Your Order's number is",
     "order not created"     : "Order not created",
     "order created"         : "Order created",
     "sum to pay"            : "Full price",
@@ -42,7 +45,7 @@
     "user show"             : "User show",
     "right"                 : "Right",
     "offers options"        : "Offers options",
-    "subscribe text"        : "Subscribe and we will notify you when the goods arrive",
+    "subscribe text"        : "We will notify you when the goods arrive",
     "order status"          : "Order status",
     "pay order"             : "Pay for the goods (set the status to 'Paid')",
     "order payment"          : "Order payment",

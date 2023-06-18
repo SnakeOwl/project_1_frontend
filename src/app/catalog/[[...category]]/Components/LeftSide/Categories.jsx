@@ -1,4 +1,4 @@
-import {  BlueLinkReversed } from "@/Components/Links/ColoredLinks";
+import { BlueLinkReversed } from "@/Components/Links/ColoredLinks";
 import axiosClient from "@/axios-client";
 import ContextCatalog from "@/context/Catalog/ContextCatalog";
 import { useContext, useEffect, useState } from "react";
@@ -23,28 +23,21 @@ export default function Categories({ className = "" }) {
         <div className={`${className} flex flex-col`}>
             {categories.map((category) => {
                 return (stateCatalog.activeCategoryAlias === category.alias) ?
-                    (
-                        <div 
-                            key={category.id}
-                            
-                        >
-                            <BlueButton className={"py-2 text-center mb-3 w-full"} >
-                                {category.name}
-                            </BlueButton>
-
-                            <Options categoryId={category.id}/>
-                        </div>
-                    )
-                    :
-                    (
-                        <BlueLinkReversed
-                            key={category.id}
-                            href={`/catalog/${category.alias}`}
-                            className={"py-2 text-center mb-3 rounded"}
-                        >
+                    <div key={category.id} >
+                        <BlueButton className={"py-2 text-center mb-3 w-full"} >
                             {category.name}
-                        </BlueLinkReversed>
-                    );
+                        </BlueButton>
+
+                        <Options categoryId={category.id} />
+                    </div>
+                    :
+                    <BlueLinkReversed
+                        key={category.id}
+                        href={`/catalog/${category.alias}`}
+                        className={"py-2 text-center mb-3 rounded"}
+                    >
+                        {category.name}
+                    </BlueLinkReversed>
             })}
         </div>
     );

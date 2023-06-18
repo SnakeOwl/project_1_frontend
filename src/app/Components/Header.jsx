@@ -6,6 +6,7 @@ import LangChanger from "./Header/LangChanger";
 import Login from "./Header/Login";
 import Logout from "./Header/Logout";
 import UserInfo from "./Header/UserInfo";
+import BasketButton from "./Header/BasketButton";
 
 export default function Header() {
     const { stateUser } = useContext(ContextUser);
@@ -23,12 +24,14 @@ export default function Header() {
                 </div>
 
                 <div className="w-full xl:w-1/3 h-full text-sm flex items-center justify-end">
+                    <BasketButton className="mr-2 rounded px-3 py-1" />
 
-                    {user === null ?
+                    {user == undefined ?
                         <Login className={"py-1 px-2 mr-3 rounded-md"} />
                         :
                         <Logout className={"px-2 py-1 mr-3 rounded-md"} />
                     }
+                    
                     <LangChanger className="rounded-md  h-max p-1 px-2" />
 
                 </div>

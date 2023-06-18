@@ -13,7 +13,7 @@ export default function UserInfo() {
 
     // информация пользователя
     const userInfo = [];
-    if (user !== null) {
+    if (user != undefined) {
         if (user.rights === 10) {
             // admin link
             userInfo.push(

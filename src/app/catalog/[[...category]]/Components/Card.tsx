@@ -3,8 +3,9 @@ import Img from "@/Components/Img"
 import ContextLang from "@/context/Lang/ContextLang"
 import Link from "next/link"
 import { useContext } from "react"
-import ToBusketButton from "@/Components/ToBusketButton"
+import ToBusketButton from "@/Components/Buttons/ToBusketButton"
 import IOffer from "@/interfaces/IOffer"
+import SubscribeArea from "../../../Components/SubscribeArea"
 
 export default function Card({
     offer
@@ -17,13 +18,12 @@ export default function Card({
 
     const offerLink = `/offer/${offer.id}`;
 
-
     function fastBuy() {
         alert("В разработке")
     }
 
     return (
-        <div className="p-2 ml-1 mb-8 w-full xl:w-1/6">
+        <div className="p-2 pb-4 ml-1 mb-8 w-full xl:w-1/6 ring-1 rounded-lg ring-gray-800">
             <div className="h-64 rounded-xl overflow-hidden mb-2">
                 <Link href={offerLink} className="h-full w-full" >
                     <Img
@@ -51,23 +51,26 @@ export default function Card({
                     <span>{offer.price}</span>
                 </div>
 
-                <div className="flex justify-between">
-                    <ToBusketButton  
-                        offerId={offer.id}
-                        className={"py-2 px-5 rounded-md"} 
-                    >
-                        {lang["to basket"]}
-                    </ToBusketButton>
+                {offer.count > 0 ?
+                    <div className="flex justify-between">
+                        <ToBusketButton
+                            offerId={offer.id}
+                            className={"py-2 px-5 rounded-md"}
+                        >
+                            {lang["to basket"]}
+                        </ToBusketButton>
 
-                    <RedButtonReversed
-                        className={"py-2 px-3 rounded-md"}
-                        onClick={fastBuy}
-                    >
-                        <i className="bi bi-hand-index-thumb"></i>
-                    </RedButtonReversed>
-                </div>
+                        <RedButtonReversed
+                            className={"py-2 px-3 rounded-md"}
+                            onClick={fastBuy}
+                        >
+                            <i className="bi bi-hand-index-thumb"></i>
+                        </RedButtonReversed>
+                    </div>
+                    :
+                    <SubscribeArea offerId={offer.id} />
+                }
             </div>
-
         </div>
     )
 }
