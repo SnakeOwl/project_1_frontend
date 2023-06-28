@@ -36,7 +36,7 @@ module.exports = {
             color: theme('colors.red.600'),
         },
         'a:first-letter':{
-            "text-decoration": "underline"
+            "text-decoration": "underline",
         }
     })
   }],

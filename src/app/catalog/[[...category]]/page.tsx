@@ -31,8 +31,8 @@ export default function Catalog({
 
 
     return (
-        <div className="">
-            <OfferList className={"px-1"} offers={offers.data} />
+        <div>
+            <OfferList offers={offers.data} />
 
             <Pagination links={offers.links} />
         </div>

@@ -1,12 +1,9 @@
-import ContextLang from "@/context/Lang/ContextLang";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BlueButton } from '@/Components/Buttons/ColoredButtons'
 import { Input, Textarea } from "@/Components/Inputs/Inputs"
 import axiosClient from '@/axios-client'
 
-export default function SupportForm({ className }) {
-    const { stateLang } = useContext(ContextLang);
-    const { lang } = stateLang;
+export default function SupportForm({ lang }) {
 
     // данные для отправки на сервер
     const [data, setData] = useState({
@@ -18,7 +15,7 @@ export default function SupportForm({ className }) {
     // данные для визуализации формы
     const [side, setSide] = useState({
         errors: [],
-        errMessage: null,
+        errMessage: undefined,
         successMessage: false
     });
 
@@ -30,7 +27,7 @@ export default function SupportForm({ className }) {
             .then(({ data }) => {
                 setSide({
                     errors: [],
-                    errMessage: null,
+                    errMessage: undefined,
                     successMessage: lang[data.message]
                 });
             }).catch(error => {
@@ -68,8 +65,8 @@ export default function SupportForm({ className }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={`${className} `}>
-            {side.errMessage !== null &&
+        <form onSubmit={handleSubmit} className="mb-2 text-left">
+            {side.errMessage !== undefined &&
                 <p className="text-red-600 border-red-200 border-2 text-justify py-3 px-2 rounded-md">{side.errMessage}</p>
             }
             <Input

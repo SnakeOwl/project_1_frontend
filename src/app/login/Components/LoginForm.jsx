@@ -5,7 +5,7 @@ import ContextLang from "@/context/Lang/ContextLang";
 import ContextUser from "@/context/User/ContextUser";
 import { useContext, useState } from "react";
 
-export default function LoginForm({ className = "" }) {
+export default function LoginForm() {
     const { stateLang } = useContext(ContextLang);
     const { dispatchUser } = useContext(ContextUser);
     const { lang } = stateLang;
@@ -30,8 +30,8 @@ export default function LoginForm({ className = "" }) {
             .then(({ data }) => {
                 // обновление записи пользователя в приложении
                 dispatchUser({
-                    type: 'SET_USER',
-                    user: data.user,
+                    type: 'SET_TOKEN',
+                    token: data.token,
                 });
 
                 // запись токена для проверки в API, на сервере
@@ -76,7 +76,7 @@ export default function LoginForm({ className = "" }) {
 
 
     return (
-        <form onSubmit={handleSubmit} className={className}>
+        <form onSubmit={handleSubmit} className="text-left px-4">
             {side.errMessage !== null &&
                 <p className="text-red-600 border-red-200 border-2 text-justify py-3 px-2 rounded-md">{side.errMessage}</p>
             }
@@ -87,7 +87,7 @@ export default function LoginForm({ className = "" }) {
                 onChange={e => setData({ ...data, email: e.target.value })}
                 labelText={lang["email"]}
                 placeholder="WalterWhite@gmail.com"
-                className={"mb-3"}
+                className="mb-8"
 
                 error={side.errors.email}
                 required
@@ -98,12 +98,13 @@ export default function LoginForm({ className = "" }) {
                 type="password"
                 onChange={e => setData({ ...data, password: e.target.value })}
                 labelText={lang["password"]}
+                className="mb-8"
 
                 error={side.errors.password}
                 required
             />
 
-            <BlueButton className={"w-full py-3 my-2"}>{lang["log in"]}</BlueButton>
+            <BlueButton className={"w-full py-3"}>{lang["log in"]}</BlueButton>
         </form>
     );
 }

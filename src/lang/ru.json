@@ -1,4 +1,7 @@
 {
+    "in process"            : "В процессе",
+    "active orders"         : "Активные заказы",
+    "navigation"            : "Навигация",
     "critical error"        : "Критическая ошибка, свяжитесь с администрацией",
     "thank for order"       : "Спасибо за Заказ",
     "parameters"            : "Характеристики",
@@ -142,7 +145,7 @@
     "Order data"            : "Данные о заказе",
     "Access denied"         : "Отказано в дотупе",
     "Your basket is empty"  : "Ваша корзина пуста",
-    "dataHasBeenChanged"    : "Данные были изменены",
+    "data changed"          : "Данные изменены",
     "allUserOrders"         : "Все заказы пользователя",
     "about"                 : "Подробнее",
     "deliveryMethod"        : "Способ доставки",

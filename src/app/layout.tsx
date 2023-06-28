@@ -1,6 +1,6 @@
 import "./globals.css";
-import localFont from "next/font/local";
 import Wrapper from "./Components/Wrapper";
+import localFont from "next/font/local";
 
 const comfortaa = localFont({
   src: [
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${comfortaa.className} bg-white dark:bg-gray-950 dark:text-gray-300`}
+        className={`${comfortaa.className} bg-white dark:bg-gray-950 dark:text-gray-300 px-4 xl:px-0`}
       >
         <Wrapper>{children}</Wrapper>
       </body>

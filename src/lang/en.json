@@ -1,6 +1,8 @@
 {
+    "in process"            : "In process",
+    "active orders"         : "Active orders",
+    "navigation"            : "Navigation",
     "critical error"        : "Critical Error, call to Administator",
-
     "thank for order"       : "Thank you for Order",
     "parameters"            : "Parameters",
     "description"           : "Description",
@@ -144,7 +146,7 @@
     "Order data"            : "Order data",
     "Access denied"         : "Access denied",
     "Your basket is empty"  : "Your basket is empty",
-    "dataHasBeenChanged"    : "Data has been changed",
+    "data changed"          : "Data has changed",
     "changeData"            : "Change Data",
     "allUserOrders"         : "All User orders",
     "about"                 : "About",

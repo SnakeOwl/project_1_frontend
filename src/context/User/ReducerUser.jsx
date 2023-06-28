@@ -1,10 +1,10 @@
 export default function  ReducerUser (state, action) {
     switch(action.type){
 
-        case 'SET_USER':
+        case 'SET_TOKEN':
             return {
                 ...action,
-                user: action.user
+                token: action.token
             }
 
         case "SET_BKEY":

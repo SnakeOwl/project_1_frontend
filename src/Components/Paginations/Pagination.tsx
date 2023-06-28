@@ -1,20 +1,19 @@
 import { BlueButtonReversed } from "@/Components/Buttons/ColoredButtons"
 import axiosClient from "@/axios-client"
-import ContextCatalog from "@/context/Catalog/ContextCatalog"
-import { useContext } from "react"
+import IPaginationLink from "@/interfaces/IPaginationLink";
 
 export default function Pagination({
-    links
+    links,
+    setState,
+    index, // orders, items , offers ... type of taking data
+    className = ""
 }: {
-    links: [{
-        url: string,
-        label: string,
-        active: boolean
-    }]
+    setState: Function,
+    index: string,
+    className: string,
+
+    links: IPaginationLink[],
 }) {
-
-    const { dispatchCatalog } = useContext(ContextCatalog);
-
 
     function scrollToTop() {
         window.scrollTo({
@@ -27,24 +26,22 @@ export default function Pagination({
 
     async function handleClick(url: string) {
         await axiosClient.get(url)
-            .then(({ data }: { data: { offers: [] } }) => {
-
-                dispatchCatalog({
-                    type: "SET_OFFERS",
-                    offers: data.offers
-                });
+            .then(({ data }) => {
+                setState(data[index].data)
             })
             .catch(error => {
-                console.log(error);
-            })
+                console.log("errror in the Pagination component");
+            });
+
 
         scrollToTop();
     }
 
 
 
+
     return (
-        <div className="w-fit flex mx-auto">
+        <div className={`${className} w-fit flex mx-auto`}>
             {
 
                 links.map(link => {
@@ -52,7 +49,7 @@ export default function Pagination({
                     return (
                         <BlueButtonReversed
                             key={link.label}
-                            className={`text-sm xl:text-base py-1 px-3 first:rounded-l-md last:rounded-r-md ${activeC}`}
+                            className={`py-1 px-3 first:rounded-l-md last:rounded-r-md ${activeC}`}
                             onClick={() => handleClick(link.url)}
                         >
                             {link.label}

@@ -3,4 +3,6 @@ export default interface IOption {
     value: string,
     value_en: string,
     count: number
+
+    offerId: number | null
 }

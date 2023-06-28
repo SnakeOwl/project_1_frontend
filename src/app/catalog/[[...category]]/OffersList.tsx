@@ -1,21 +1,23 @@
+import IOffer from "@/interfaces/IOffer"
 import Card from "./Components/Card"
 
 export default function OfferList({
-    className,
     offers
-}){
+}: {
+    offers: IOffer[]
+}) {
     return (
-        <div className={`px-3 flex flex-wrap justify-around ${className}`}>
+        <main className="flex flex-wrap justify-around">
             {
-                offers.map(offer=>{
+                offers.map(offer => {
                     return (
-                        <Card 
+                        <Card
                             key={`offer-${offer.id}`}
                             offer={offer}
                         />
                     )
                 })
             }
-        </div>
+        </main>
     )
 }

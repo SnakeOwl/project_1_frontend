@@ -1,7 +1,6 @@
 "use client"
 import Header from './Header'
 import Footer from './Footer'
-import Bootstrap from './Bootstrap'
 
 import { useReducer } from 'react'
 
@@ -22,7 +21,6 @@ export default function Wrapper({ children }) {
         <>
             <ContextLang.Provider value={{ stateLang, dispatchLang }}>
                 <ContextUser.Provider value={{ stateUser, dispatchUser }}>
-                    <Bootstrap />  {/* функциональный компонент */}
                     <Header />
                     {children}
                 </ContextUser.Provider>

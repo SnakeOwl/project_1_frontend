@@ -5,20 +5,11 @@ import { BlueButton } from "@/Components/Buttons/ColoredButtons";
 import { Input } from "@/Components/Inputs/Inputs";
 import ContextLang from "@/context/Lang/ContextLang"
 import ContextUser from "@/context/User/ContextUser";
-import { useRouter } from "next/navigation";
 import { useContext, useRef, useState } from "react"
 
 export default function Sighup() {
 
-    // перенаправление, если пользователь уже есть в приложении
-    const { stateUser,dispatchUser } = useContext(ContextUser);
-    const router = useRouter();
-
-    useEffect(() => {
-        if (stateUser.user !== null)
-            router.push("/user") // redirect
-    }, [stateUser.user]);
-
+    const { dispatchUser } = useContext(ContextUser);
 
     const { stateLang } = useContext(ContextLang);
     const { lang } = stateLang;
@@ -47,8 +38,8 @@ export default function Sighup() {
             .then(({ data }) => {
                 // обновление записи пользователя в приложении
                 dispatchUser({
-                    type: 'SET_USER',
-                    user: data.user,
+                    type: 'SET_TOKEN',
+                    token: data.token,
                 });
 
                 // запись токена для проверки в API, на сервере
@@ -91,6 +82,7 @@ export default function Sighup() {
             })
     }
 
+
     function handleChangePassword(e) {
         if (e.target.value === data.password_confirmation) {
             password_confirmationRef.current.classList.remove("border-red-800")
@@ -100,6 +92,7 @@ export default function Sighup() {
 
         setData({ ...data, password: e.target.value });
     }
+
 
     function handleChangePasswordConfirmation(e) {
         if (e.target.value === data.password) {
@@ -111,6 +104,7 @@ export default function Sighup() {
         setData({ ...data, password_confirmation: e.target.value });
     }
 
+    
     return (
         <main className="xl:w-1/4 mx-auto">
             <h1 className="text-center">{lang["registration"]}</h1>
@@ -124,7 +118,7 @@ export default function Sighup() {
                     id="name"
                     labelText={lang["name"]}
                     value={data.name}
-                    className={"mb-2"}
+                    className={"mb-4"}
 
                     onChange={e => setData({ ...data, name: e.target.value })}
                     error={side.errors.name}
@@ -138,7 +132,7 @@ export default function Sighup() {
                     labelText={lang["email"]}
                     value={data.email}
 
-                    className={"mb-2"}
+                    className={"mb-4"}
                     onChange={e => setData({ ...data, email: e.target.value })}
                     error={side.errors.email}
                     required
@@ -152,7 +146,7 @@ export default function Sighup() {
                     labelText={lang["password"]}
                     value={data.password}
 
-                    className={"mb-2"}
+                    className={"mb-4"}
                     onChange={handleChangePassword}
                     error={side.errors.password}
                     required
@@ -166,7 +160,7 @@ export default function Sighup() {
                     labelText={lang["confirm password"]}
                     value={data.password_confirmation}
 
-                    className={"mb-2"}
+                    className={"mb-4"}
                     onChange={handleChangePasswordConfirmation}
                     useRef={password_confirmationRef}
                     error={side.errors.name}

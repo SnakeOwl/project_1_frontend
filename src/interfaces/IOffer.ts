@@ -1,3 +1,4 @@
+import IImage from "./IImage";
 import IItem from "./IItem";
 import IOption from "./IOption";
 
@@ -8,10 +9,13 @@ export default interface IOffer {
     count: number,
 
     item: IItem,
-    options: [IOption]
+    options: IOption[],
+
     pivot: {
         basket_id: number,
         count: number,
         offer_id: number
     } | null,
+
+    images: IImage[] | null
 }

@@ -1,5 +1,4 @@
 import LightGallery from 'lightgallery/react';
-import defImage from "@/images/system/default.jpg"
 // import styles
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
@@ -11,11 +10,12 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
 import APIroutes from "@/config/API_routes.json";
+import IImage from '@/interfaces/IImage';
 
 export default function Galery({
     images
 }: {
-    images: { id: number, url: string }[]
+    images: IImage[]
 }) {
 
     if (images.length === Number(0))
@@ -40,7 +40,7 @@ export default function Galery({
                         const link = `${apiStorage}/${image.url}`;
 
                         return (
-                            <a key={image.id} className='w-1/4 mx-2' href={link}>
+                            <a key={image.id} className='w-1/2 xl:w-1/4 px-2' href={link}>
                                 <Img className='' alt="img1" src={link} />
                             </a>
                         )

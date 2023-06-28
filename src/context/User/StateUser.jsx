@@ -1,6 +1,6 @@
 const StateUser = {
-    user: undefined,
-    bkey: localStorage.getItem("bkey") || undefined,
+    token: localStorage?.getItem("ACCESS_TOKEN") || undefined,
+    bkey: localStorage?.getItem("bkey") || undefined,
 };
 
 export default StateUser;
