@@ -1,5 +1,16 @@
-export default function  ReducerUser (state, action) {
-    switch(action.type){
+import UserContextType from "./UserContextType";
+
+
+type Action =
+    | { type: 'SET_TOKEN', token: string }
+    | { type: 'SET_BKEY', bkey: string };
+
+
+export default function ReducerUser(
+    state: UserContextType,
+    action: Action
+): UserContextType {
+    switch (action.type) {
 
         case 'SET_TOKEN':
             return {
@@ -12,7 +23,7 @@ export default function  ReducerUser (state, action) {
                 ...action,
                 bkey: action.bkey
             }
-            
+
         default:
             return state;
     }

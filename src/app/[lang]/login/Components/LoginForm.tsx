@@ -3,7 +3,8 @@
 import axiosClient from "@/axios-client";
 import { BlueButton } from "@/Components/Buttons/ColoredButtons";
 import { Input } from "@/Components/Inputs/Inputs";
-import { useState } from "react";
+import ContextUser from "@/context/User/ContextUser";
+import { useContext, useState } from "react";
 
 export default function LoginForm({
     dictionary
@@ -18,10 +19,11 @@ export default function LoginForm({
     });
 
     function _setData(e: React.ChangeEvent<HTMLInputElement>){
-        return {
+        console.log(e.target.id)
+        setData({
             ...data,
             [e.target.id]: e.target.value
-        }
+        })
     }
 
     // form's side data
@@ -34,17 +36,19 @@ export default function LoginForm({
     });
 
 
+    const {dispatchUser} = useContext(ContextUser);
+
+
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
         await axiosClient.post('login', data)
             .then(({ data }) => {
-                // todo: обновить запись в локальном storage
                 // обновление записи пользователя в приложении
-                // dispatchUser({
-                //     type: 'SET_TOKEN',
-                //     token: data.token,
-                // });
+                dispatchUser({
+                    type: 'SET_TOKEN',
+                    token: data.token,
+                });
 
                 // запись токена для проверки в API, на сервере
                 if (data.token) {
