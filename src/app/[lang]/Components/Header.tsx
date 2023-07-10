@@ -14,7 +14,8 @@ export default function Header() {
     const dictionary = useContext(ContextDictionary);
 
     const { stateUser } = useContext(ContextUser);
-console.log(stateUser.token)
+
+    
     return (
         <header className="border-b-2 dark:border-gray-900 py-4 mb-4">
 

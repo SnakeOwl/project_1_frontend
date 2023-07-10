@@ -23,6 +23,9 @@ function updateData(setFunc: Function) {
                 name: data.name
             });
         })
+        .catch(error=>{
+            console.log("error. Can't get user information.")
+        })
 }
 
 

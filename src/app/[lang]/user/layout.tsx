@@ -1,6 +1,24 @@
+"use client"
+
 import Navigation from "./Components/Navigation";
 import getDictionaryStatic from "@/utils/get-dictionary-static";
 import { Locale } from "@/i18n-config";
+import { useContext, useEffect } from "react";
+import ContextUser from "@/context/User/ContextUser";
+import { useRouter } from "next/navigation";
+
+
+function useRedirect(){
+    // перенаправление, если пользователя нет в локальном хранилище
+    const { stateUser } = useContext(ContextUser);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (stateUser.token === undefined)
+            router.push("/login") // redirect
+    }, [stateUser.token]);
+}
+
 
 export default function UserLayout({
     children,
@@ -15,14 +33,7 @@ export default function UserLayout({
     const dictionary = getDictionaryStatic(lang);
 
 
-    // перенаправление, если пользователя нет в локальном хранилище
-    // const { stateUser } = useContext(ContextUser);
-    // const router = useRouter();
-
-    // useEffect(() => {
-    //     if (stateUser.token === undefined)
-    //         router.push("/login") // redirect
-    // }, [stateUser.token]);
+    useRedirect();
 
 
     return (
