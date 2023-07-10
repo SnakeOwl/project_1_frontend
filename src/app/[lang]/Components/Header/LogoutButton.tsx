@@ -5,8 +5,8 @@ import ContextUser from "@/context/User/ContextUser";
 import { useContext } from "react";
 
 export default function LogoutButton() {
-    
-    const { stateUser } = useContext(ContextUser);
+
+    const { dispatchUser } = useContext(ContextUser);
 
 
     async function handleClick() {
@@ -15,12 +15,13 @@ export default function LogoutButton() {
                 // стереть с локального хранилища, 
                 // чтобы приложение не начало получать данные по пользователю через токен
                 localStorage.removeItem("ACCESS_TOKEN");
+
+                dispatchUser({
+                    type: "SET_TOKEN",
+                    token: undefined
+                })
             });
     }
-
-
-    if (stateUser.token === undefined)
-        return <></>;
 
 
     return (

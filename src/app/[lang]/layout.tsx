@@ -7,10 +7,11 @@ import Header from "./Components/Header";
 import { Locale, i18n } from '@/i18n-config'
 import getDictionaryStatic from "@/utils/get-dictionary-static";
 import ContextDictionary from "@/context/DIctionary/ContextDictionary";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import ReducerUser from "@/context/User/ReducerUser";
 import ContextUser from "@/context/User/ContextUser";
 import UserContextType from "@/context/User/UserContextType";
+import FunctionalOnlyComponent from "./Components/FunctionalOnlyComponent";
 
 const comfortaa = localFont({
     src: [
@@ -43,10 +44,6 @@ export default function RootLayout({
         bkey: undefined
     };
 
-    if (typeof window !== "undefined") {
-        updatedStateUser.token = localStorage?.getItem("ACCESS_TOKEN") || undefined;
-        updatedStateUser.bkey = localStorage?.getItem("bkey") || undefined;
-    }
 
     const [stateUser, dispatchUser] = useReducer(ReducerUser, updatedStateUser);
 
@@ -56,6 +53,7 @@ export default function RootLayout({
             <body className={`${comfortaa.className} bg-white dark:bg-gray-950 dark:text-gray-300 px-4 xl:px-0`}>
                 <ContextDictionary.Provider value={dictionary}>
                     <ContextUser.Provider value={{ stateUser, dispatchUser }}>
+                        <FunctionalOnlyComponent />
                         <Header />
 
                         {children}

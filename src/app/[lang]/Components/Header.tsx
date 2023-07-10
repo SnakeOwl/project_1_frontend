@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import Logo from "@/Components/Logo";
 import LangChanger from "./Header/LangChanger";
@@ -7,10 +8,13 @@ import UserHomeLink from "./Header/UserHomeLink";
 import LoginLink from "./Header/LoginLink";
 import { useContext } from "react";
 import ContextDictionary from "@/context/DIctionary/ContextDictionary";
+import ContextUser from "@/context/User/ContextUser";
 
 export default function Header() {
     const dictionary = useContext(ContextDictionary);
 
+    const { stateUser } = useContext(ContextUser);
+console.log(stateUser.token)
     return (
         <header className="border-b-2 dark:border-gray-900 py-4 mb-4">
 
@@ -25,11 +29,18 @@ export default function Header() {
                     </div>
 
                     <div className="w-1/2 h-full text-sm flex items-center justify-end ">
-                        <BasketButton />
+                        {stateUser.bkey !== undefined &&
+                            <BasketButton />
+                        }
 
-                        <LoginLink />
-                        <UserHomeLink />
-                        <LogoutButton />
+                        {stateUser.token !== undefined ?
+                            <>
+                                <UserHomeLink />
+                                <LogoutButton />
+                            </>
+                            :
+                            <LoginLink />
+                        }
 
                         <LangChanger />
                     </div>

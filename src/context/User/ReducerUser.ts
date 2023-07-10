@@ -3,7 +3,8 @@ import UserContextType from "./UserContextType";
 
 type Action =
     | { type: 'SET_TOKEN', token: string }
-    | { type: 'SET_BKEY', bkey: string };
+    | { type: 'SET_BKEY', bkey: string }
+    | { type: 'SET', token:string , bkey: string };
 
 
 export default function ReducerUser(
@@ -11,6 +12,12 @@ export default function ReducerUser(
     action: Action
 ): UserContextType {
     switch (action.type) {
+        case "SET":{
+            return {
+                token: action.token,
+                bkey: action.bkey
+            }
+        }
 
         case 'SET_TOKEN':
             return {

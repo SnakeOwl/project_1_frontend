@@ -19,7 +19,6 @@ export default function LoginForm({
     });
 
     function _setData(e: React.ChangeEvent<HTMLInputElement>){
-        console.log(e.target.id)
         setData({
             ...data,
             [e.target.id]: e.target.value
