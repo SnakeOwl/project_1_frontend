@@ -1,3 +1,4 @@
+"use client"
 import { RedButton, RedButtonReversed } from "@/Components/Buttons/ColoredButtons";
 import axiosClient from "@/axios-client";
 import ContextUser from "@/context/User/ContextUser";
@@ -52,6 +53,7 @@ export default function ToBusketButton({
     if (inBasket)
         return <RedButtonReversed className={className}>I Love You ❤</RedButtonReversed>
 
+        
     return (
         <RedButton
             className={className}
